@@ -93,15 +93,13 @@ def main():
     except IndexError:
         usage()
 
-    if command not in ["validate", "normalize"]:
-        usage()
-    else:
+    if command == "validate":
         input = open("db.json", "r", encoding="utf-8").read()
-        if command == "validate":
-            validate(input)
-        elif command == "normalize":
-            normalize(input)
-        else:
-            assert False, "Unreachable code."
+        validate(input)
+    elif command == "normalize":
+        input = open("db.json", "r", encoding="utf-8").read()
+        normalize(input)
+    else:
+        usage()
 
 main()
